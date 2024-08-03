@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "pm2 start src/index.js --deep-monitoring --attach --name DEXTER-MD",
-    "stop": "pm2 stop hansamal",
+    "stop": "pm2 stop Dexter-MD",
     "restart": "pm2 restart DEXTER-MD"
   },
   "keywords": ["DEXTER-MD", "whatsapp-bot", "whatsapp md bot"],
-  "author": "ruwantha-md",
+  "author": "Dexter-MD",
   "license": "APACHE-2.0",
   "dependencies": {
     "@distube/ytdl-core": "^4.13.5",
