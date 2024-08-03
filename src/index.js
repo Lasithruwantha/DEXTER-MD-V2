@@ -74,7 +74,7 @@ async function downloadSessionData() {
         const response = await axios.get(url);
         const data = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
         await fs.promises.writeFile(credsPath, data);
-        console.log("👑 Session Successfully Loaded !!");
+        console.log("💞 Session Successfully Loaded !!");
     } catch (error) {
         console.error('Failed to download session data:', error);
         process.exit(1);
@@ -89,20 +89,20 @@ async function start() {
     try {
         const { state, saveCreds } = await useMultiFileAuthState(sessionDir);
         const { version, isLatest } = await fetchLatestBaileysVersion();
-        console.log(`🧬DEXTER-MD using WA v${version.join('.')}, isLatest: ${isLatest}`);
+        console.log(`🧬HANSAMAL-MD using WA v${version.join('.')}, isLatest: ${isLatest}`);
         
         const Matrix = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: true,
-            browser: ["ruwantha", "safari", "3.3"],
+            browser: ["hansamal", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
                     const msg = await store.loadMessage(key.remoteJid, key.id);
                     return msg.message || undefined;
                 }
-                return { conversation: "DEXTER-MD Nonstop Testing" };
+                return { conversation: "Hansamal-MD Nonstop Testing" };
             }
         });
 
@@ -114,7 +114,7 @@ async function start() {
                 }
             } else if (connection === 'open') {
                 if (initialConnection) {
-                    console.log(chalk.green("DEXTER-MD CONNECTED Successful️ ✅"));
+                    console.log(chalk.green("HANSAMAL-MD CONNECTED Successful️ ✅"));
                     Matrix.sendMessage(Matrix.user.id, { text: `DEXTER-MD CONNECTED Successful️ ✅` });
                     initialConnection = false;
                 } else {
